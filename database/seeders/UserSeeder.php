@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Container\Attributes\DB;
+use Illuminate\Support\Attributes\DB;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder

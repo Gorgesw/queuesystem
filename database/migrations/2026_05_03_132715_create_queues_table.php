@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('hash_code', 64)->unique();
             $table->enum('status', ['active', 'inactive', 'done'])->default('inactive'); 
             $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_ad')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->dateTime('deleted_at')->nullable()->default(null);
         });
     }

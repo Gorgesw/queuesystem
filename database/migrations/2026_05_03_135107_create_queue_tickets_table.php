@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('queue_ticket_status', ['waiting', 'called', 'not_attended', 'dismissed'])->default('waiting');
             $table->string('queue_ticket_called_by', 50)->nullable();
             $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_ad')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->dateTime('deleted_at')->nullable()->default(null);
         });
     }

@@ -14,7 +14,6 @@ class CompanySeeder extends Seeder
     public function run(): void
     {
          
-   
 
         for ($index = 1; $index <=3; $index++) {
             $companies[] = [
@@ -27,7 +26,7 @@ class CompanySeeder extends Seeder
                 'status'       => 'active',
                 'created_at'   => now(),
                 'updated_at'   => now(),
-                'deleted_at'   => now(),
+                'deleted_at'   => null,
             ];
         }
 

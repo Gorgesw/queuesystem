@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('active')->default(false);
             $table->dateTime('blocked_until')->nullable()->default(null);
             $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_ad')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->dateTime('deleted_at')->nullable()->default(null);
         });
     }
