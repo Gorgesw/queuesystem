@@ -78,20 +78,25 @@ class AuthController extends Controller {
                 'new_password' =>'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,16}$/|confirmed'   
             ],
             [
-                'current_password' =>'A senha Atual é obrigatória!',
+                'current_password.required' =>'A senha Atual é obrigatória!',
                 'new_password.required' => 'A nova senha é obrigatória!', 
                 'new_password.regex' => 'A nova senha deve conter entre 6 e 16 caracteres, ter uma letra Maiúscula, uma Minúscula e um Número,',
                 'new_password.confirmed' => 'As senhas informadas não estão iguais.',
+                
             ]
         );
 
         $user = Auth::user();
 
+        if (Hash::check($request->new_password, $user->password)) {
+            return redirect()->back()->with('server_error', 'A nova senha deve ser diferente da senha atual.');
+        }
+
         if (Hash::check($request->current_password, $user->password)) {
             $user->password = Hash::make($request->new_password);
             $user->save();
 
-            return redirect()->route('home')->with('Senha Alterada Com Sucesso!');
+            return redirect()->route('home')->with('message', 'Senha Alterada Com Sucesso!');
         } else {
             return redirect()->back()->with('server_error', 'Senha atual inválida');
         }

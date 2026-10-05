@@ -15,4 +15,5 @@ class QueueTicket extends Model
     public function queue() {
         return $this->belongsTo(Queue::class, 'id_queue');
     }
+    
 }
